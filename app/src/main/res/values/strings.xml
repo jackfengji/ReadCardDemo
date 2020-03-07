@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">二代证读卡程序-java</string>
+    <string name="app_name">小锦-访客登记系统</string>
     <string name="sReadCard">单次读卡</string>
     <string name="sScanDevice">循环读卡</string>    
     <string name="nameLable">姓名</string>     

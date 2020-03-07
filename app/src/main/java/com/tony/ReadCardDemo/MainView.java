@@ -363,7 +363,7 @@ public class MainView extends RelativeLayout
 
         Vector<View> lines = new Vector<View>();
         lines.addElement(uploadBtn);
-        lines.addElement(readBtn);
+//        lines.addElement(readBtn);
 
 
         RelativeLayout layout = new RelativeLayout(context);
