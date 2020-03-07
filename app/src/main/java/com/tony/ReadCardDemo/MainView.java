@@ -262,13 +262,15 @@ public class MainView extends RelativeLayout
 
         tripView.setOnClickListener(v->{
 
-
+            phoneView.clearFocus();
+            temperatureView.clearFocus();
             try
             {
+
                 InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-                imm.hideSoftInputFromWindow(getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                imm.showSoftInput(MainView.this,InputMethodManager.SHOW_FORCED);
+//                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+//                imm.hideSoftInputFromWindow(getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+//                imm.showSoftInput(MainView.this,InputMethodManager.HIDE_NOT_ALWAYS);
                 imm.hideSoftInputFromWindow(getWindowToken(), 0); //强制隐藏键盘
             }
             catch (Exception e)
@@ -451,6 +453,10 @@ public class MainView extends RelativeLayout
                         ((Activity)(getContext())).runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
+                                phoneView.setText("");
+                                tripView.setText("");
+                                temperatureView.setText("36.5℃");
                                 dismissLoadingDialog();
                             }
                         });
