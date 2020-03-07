@@ -246,7 +246,7 @@ public class MainView extends RelativeLayout
         phoneView.setTitle("联系电话");
 
         phoneView.messageView.setInputType(TYPE_CLASS_NUMBER);//添加识别只能输入电话号码
-        phoneView.messageView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(13)});
+        phoneView.messageView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
 
         tripView = new LineView(context);
         tripView.setTitle("事由");
@@ -432,15 +432,39 @@ public class MainView extends RelativeLayout
 
         if(!isPosting)
         {
+            boolean isOk = true;
             String code = codeView.getText();
+            String phone = phoneView.getText();
+            String trip = tripView.getText();
+
             if(Util.isNull(code))
             {
                 AlertDialog.Builder builder = new  AlertDialog.Builder(getContext());
                 builder.setTitle("提示");
-                builder.setMessage("未获取访客信息");
+                builder.setMessage("身份证信息未获取");
                 builder.show();
+                isOk = false;
             }
-            else
+
+            if(isOk&&Util.isNull(phone))
+            {
+                AlertDialog.Builder builder = new  AlertDialog.Builder(getContext());
+                builder.setTitle("提示");
+                builder.setMessage("联系电话未填");
+                builder.show();
+                isOk = false;
+            }
+            if(isOk&&Util.isNull(trip))
+            {
+                AlertDialog.Builder builder = new  AlertDialog.Builder(getContext());
+                builder.setTitle("提示");
+                builder.setMessage("来往事由未填");
+                builder.show();
+                isOk = false;
+            }
+
+
+            if(isOk)
             {
                 isPosting = true;
                 showLoadingDialog();
@@ -549,8 +573,6 @@ public class MainView extends RelativeLayout
 
 
         try {
-
-
             String json = "{";
             json += "\"xm\":\""+java.net.URLEncoder.encode(name,"utf-8")+"\",";
             json += "\"xb\":\""+java.net.URLEncoder.encode(gender,"utf-8")+"\",";
