@@ -184,7 +184,7 @@ public class MainView extends RelativeLayout
         RelativeLayout layout = new RelativeLayout(context);
 
         int iconWidth = AUtil.getDeviceWidth(context)*20/100;
-        int iconHeight = AUtil.getDeviceHeight(context)*40/100;
+        int iconHeight = AUtil.getDeviceHeight(context)*30/100;
 
         int detailWidth = AUtil.getDeviceWidth(context)*80/100;
         int detailHeight = iconHeight;
@@ -218,6 +218,7 @@ public class MainView extends RelativeLayout
 
         for(int i=0;i<lines.size();i+=2)
         {
+            Util.debug("i"+i);
             LineView leftView = lines.elementAt(i);
             LineView rightView = lines.elementAt(i+1);
 

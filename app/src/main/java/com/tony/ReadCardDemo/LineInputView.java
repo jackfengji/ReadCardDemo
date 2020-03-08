@@ -57,20 +57,23 @@ public class LineInputView extends RelativeLayout
         titleView.setText(" "+text+" ");
     }
 
+    boolean isRelayout = false;
     public void onLayout(boolean changed, int l, int t, int r, int b)
     {
         super.onLayout(changed,l,t,r,b);
-        int width = getWidth();
+        if(!isRelayout)
+        {
+            int width = getWidth();
 
-        LayoutParams titleView_params = (LayoutParams) titleView.getLayoutParams();
-        titleView_params.width = width*20/100;
-        titleView.setLayoutParams(titleView_params);
+            LayoutParams titleView_params = (LayoutParams) titleView.getLayoutParams();
+            titleView_params.width = width*20/100;
+            titleView.setLayoutParams(titleView_params);
 
 //        titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX,(width*20/100)/5);
-        titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX,30);
-        messageView.setTextSize(TypedValue.COMPLEX_UNIT_PX,30);
-
-
+            titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX,30);
+            messageView.setTextSize(TypedValue.COMPLEX_UNIT_PX,30);
+            isRelayout = true;
+        }
     }
 
     public String getText() {
